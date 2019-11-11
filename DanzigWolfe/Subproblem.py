@@ -16,6 +16,7 @@ def SubProblem(jobs_data):
 
     assigned_task_type = namedtuple('assigned_task_type', 'start_job_idx_duration')
 
+    # Create job interval and add to the corresponding list
     all_tasks = {}
     machine_to_intervals = defaultdict(list)
 
@@ -29,13 +30,14 @@ def SubProblem(jobs_data):
             start_var = model.NewIntVar(0, horizon, 'start' + suffix)
             end_var = model.NewIntVar(0, horizon, 'end' + suffix)
             interval_var = model.NewIntervalVar(start_var, duration, end_var, 'interval' + suffix)
-            
 
+            all_tasks[job_idx, task_idx] = task_type(start=start_var, end=end_var, interval=interval_var)
 
+            machine_to_intervals[machine_idx].append(interval_var)
 
-
-
-
+    # Disjunctive constraint
+    for machine_idx in all_machines:
+        models[machine_idx].AddNoOverlap(machine_to_intervals[machine_idx])
 
 
 
