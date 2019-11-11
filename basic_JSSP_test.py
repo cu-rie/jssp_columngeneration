@@ -22,10 +22,10 @@ def MinimalJobshopSat():
     horizon = sum(task[1] for job in jobs_data for task in job)
 
     # Named tuple to store information about created variables.
-    task_type = collections.namedtuple('task_type', 'start_end_interval')
+    task_type = collections.namedtuple('task_type', 'start end interval')
     # Named tuple to manipulate solution information.
     assigned_task_type = collections.namedtuple('assigned_task_type',
-                                                'start_job_idx_duration')
+                                                'start job idx duration')
 
     # Creates job intervals and add to the corresponding machine lists.
     all_tasks = {}
