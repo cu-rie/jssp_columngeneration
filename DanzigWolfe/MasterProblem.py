@@ -1,16 +1,6 @@
 from ortools.sat.python import cp_model
 
 
-# def MasterProblem(object):
-#     def __init__(self, num_machines, num_jobs, initial, vars):
-#         model = cp_model.CpModel()
-#
-#
-#     def add_constraint(self, ):
-#         pass
-#
-#     def solve(self):
-#         pass
 class Masterproblem(object):
     def __init__(self, num_jobs, num_machines):
         self.num_jobs = num_jobs

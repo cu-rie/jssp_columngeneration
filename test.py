@@ -1,5 +1,3 @@
-from ortools.sat.python import cp_model
-
 import collections
 
 # Import Python wrapper for or-tools CP-SAT solver.
